@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<script>
+
+// fn is an external function which is does the job.
+// called fucntion is part of object.
+var calculator = {
+	calculate: function (x,y,fn){
+		return fn(x,y);
+	}
+};
+
+var sum = function (x, y){
+	return x + y;
+},
+diff  = function (x, y){
+	return x - y;
+};
+
+// Calling a fucntion on object by passing an external method.
+var sumResult = calculator.calculate(3,5, sum),
+	diffResult = calculator.calculate(7,8, diff);
+	
+alert("sumResult" + sumResult);
+alert("diffResult" + diffResult);
+
+/// Some of the Array methods.
+var fruit = ["oranges", "apples", "banana", "grapes", "banana"];
+var index = fruit.indexOf("apples");
+alert(index);
+
+var lastIndexOf = fruit.lastIndexOf("banana");
+alert(lastIndexOf);
+
+// there are few functions which operates on Arrays, which accepts with below signature 
+// and executes the function on each element in the array 
+//function name(value, index, array);
+// Let wite a function.
+
+function isString(value, index, array){
+	return typeof value === "String";
+}
+
+function isLengthOne(value, index, array){
+	return value.length === 1;
+}
+
+function startsWithG(value, index, array){
+	return value[0] === "g";
+}
+
+
+// Every method is kind of the logical &&
+alert(fruit.every(isString));
+alert(fruit.every(isLengthOne));
+
+// Every method is kind of the logical ||
+var isLengthOne = fruit.some(isLengthOne);
+alert(isLengthOne);
+// 
+var startsWithG = fruit.some(startsWithG);
+alert(startsWithG);
+
+// Filter creates a new array with resultant elements, and will not modify orginal array
+function startsWithAB(value, index, array){
+	return value[0] === "a" || value[0] === "b";
+}
+var startsWithAB = fruit.filter(startsWithAB);
+alert(startsWithAB);
+
+// Filter creates a new array with resultant elements, and will not modify orginal array
+function dosomethingForEach(value, index, array){
+	value = "New array" + value;
+	alert("foreach value" + value);
+	return value;
+}
+
+// executes on same array, and original array can be modified
+fruit.forEach(dosomethingForEach);
+alert(fruit);
+
+// Creates a new array and operates on new array.
+// Filter creates a new array with resultant elements, and will not modify orginal array
+function dosomethingMap(value, index, array){
+	value = "New array" + value;
+	alert("map value" + value);
+	return value;
+}
+var resultMap = fruit.map(dosomethingMap);
+alert(fruit);
+alert(resultMap);
+
+
+</script>
+
+
+<body>
+</body>
+</html>

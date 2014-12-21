@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<script>
+
+// Arrays can have any type of objects, its better to have same type of values.
+// Better not to use mix and match of values.
+// Array Object syntax.
+var arr = new Array(11, "hello", true); // Not a good practice.
+var len = arr.length;
+alert("len " + len );
+
+var val = arr[0];
+arr[0] = 12;
+  
+// Array literal syntax.
+var arrayLiteral = [11, "hello", true];
+// we can add add as many valuets as we can to array.
+// we can use beloe statement to add a value at the end of Array.
+arrayLiteral[arrayLiteral.length]=45;
+alert("arrayLiteral" + arrayLiteral);
+
+// Instead of using index notation. we can use methods available on Array object
+arrayLiteral.push("push values");
+alert("arrayLiteral Push" + arrayLiteral);
+
+
+var names = ["Naren", "Kumar"],
+	names2 = ["Raj", "Sahu"];
+	names3 = ["Sridhar", "You"];
+	
+var newNames  = names.concat(names2, names3);
+alert("newNames concat" + newNames);
+
+var joined = newNames.join(",");
+alert("joined" + joined);
+
+var reversed  = newNames.reverse();
+alert("reversed" + reversed);
+
+var sorted  = newNames.sort();
+
+alert("sorted" + sorted);
+
+
+</script>
+
+
+<body>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<script>
+
+// Global scope, local scope
+var globalVar = "This is gloabl variable";
+var globalFunction = function (paramOne){
+	// Local/functional scope
+	var localVar = "This is local var";
+	alert(globalVar);
+	alert(localVar);
+	
+	// Nested functions - which has its own scope,
+	var localFucntion = function (){
+		
+		// Local/functional scope
+		var superLocalVar = "This is super local var";
+		alert(superLocalVar);
+		alert(localVar);
+		alert(globalVar);
+		alert(paramOne);
+	};
+	// alert(superLocalVar); - Can't access the variables which are in inner functions.
+	localFucntion();
+}	
+
+globalFunction(3);
+var globalVar = "Value has been modified";
+// alert(localVar); - Cant access the localvariables in global scope.
+
+
+// Identifier look up, Its try to find identifier in the function chain in upwards direction.
+
+
+</script>
+
+
+<body>
+</body>
+</html>

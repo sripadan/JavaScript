@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<script>
+
+
+alert(dosomthingFirst(2,3));
+
+function dosomthingFirst(paramOne, paramTwo){
+	paramOne = paramOne+5;
+	return paramOne * paramTwo;
+}	
+
+// 
+// Anonymous function
+// In javascript Functions are values - so we can assign them to a variable.
+
+// alert(dosomthingAnonymous(5,8)); - Can't call this method because of Hoisting problem, 
+// we need to declare the variable function at top.
+var dosomthingAnonymous = function (paramOne, paramTwo){
+	paramOne = paramOne+5;
+	return paramOne * paramTwo;
+}	
+
+alert(dosomthingAnonymous(5,8));
+
+
+// Since we can assign a function to a variable, 
+// we can pass function as a method parameter variable to other function
+var dosomthingFuctionAsParam = function (paramOne, paramTwo, fun){
+	paramOne = paramOne+5;
+	return fun(paramOne,paramTwo);
+}	
+
+function sum(paramOne, paramTwo){
+	return paramOne+paramTwo;
+}
+
+// Eventhough we declare "sum" as a fucntion we can use this fucntion as a value,
+// So we can directly use name of the function i.e "sum", instead of sum() with params.
+
+function production(paramOne, paramTwo){
+	return paramOne*paramTwo;
+}
+
+var foo = dosomthingFuctionAsParam(2, 3, sum);
+var bar = dosomthingFuctionAsParam(2, 3, production);
+var barTwo = dosomthingFuctionAsParam(2, 3, function (paramOne, paramTwo){
+	return paramOne*paramTwo;
+});
+
+
+alert(foo);
+alert(bar);
+alert(barTwo);
+
+</script>
+
+
+<body>
+</body>
+</html>

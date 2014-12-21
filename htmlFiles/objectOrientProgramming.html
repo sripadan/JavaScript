@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<script>
+
+// Object literal notation is used.
+// First person object
+var personObjectLiteralNotation = {
+	firstName : "Literal",
+	lastName : "Notation",
+	getFullName : function (){
+		return this.firstName + " " + this.lastName;
+	}
+};
+
+// Second person Object
+var personObjectLiteralNotation2 = {
+	firstName : "Literal",
+	lastName : "Notation",
+	getFullName : function (){
+		return this.firstName + " " + this.lastName;
+	}
+};
+
+// If we have multiple Objects, then its not better to create multiple objects like above.
+// So We need to use Factory function to create a new object with a specified interface.
+// Below is the Factory function
+// Modify the interface in case of if you want to add a method.
+function createPerson(firstName, lastName){
+	// return statement is returning an object.
+	return {
+		firstName : firstName,
+		lastName : lastName,
+		getFullName : function (){
+			return this.firstName + " " + this.lastName;
+		},
+		greet : function (person){
+			if(typeof person.getFullName !== "undefined"){
+				return "Hello" + person.getFullName();
+			}else{
+				return "Hello there";	
+			}
+		}		
+	};
+}
+
+var person = createPerson("john first", "doe11"),
+	person2 = createPerson("me First ", "you");
+	//alert(person.greet({getFullName:"This is me"})); // Gives and error.
+	alert(person.greet(person2)); 
+
+
+// Creating our own Objects Interfaces by using Object "constructor function" notation.
+// like below - 
+// var date = new Date();
+// Its because to get the performance gains.
+// Creating out custom data type.
+// Function which starts with Upper case letter.
+// instead of using object literal notation, we use "this" keyword
+// Easy to read and maintain
+// Need to follow convintion.
+// We can create the objects by using by usinf Interface, Factory function,
+// but typically we don't do that. and use constructor function.
+// constructor function returns automatically. - i.e - this
+
+var Person = function (firstName, lastName){
+	if(this == window){
+		return Person (firstName, lastName);
+	}
+	this.firstName = firstName;
+	this.lastName = lastName;
+	
+	// Below Function Objects are created each time when a new object is created..
+	// Define object functions on on the prototype.
+	this.getFullName = function (){
+		return this.firstName + " " + this.lastName;
+	};
+	this.greet = function (person){
+		if(typeof person instanceof Person){
+			return "Hello" + person.getFullName();
+		}else{
+			return "Hello there";	
+		}
+	};	
+}
+
+// By using prototype methods space is shared between objects.
+// Every object is having a prototype.
+// every methods in String, Date are define on prototype.
+Person.prototype.getFullDetailName = function (){
+	return this.firstName + " " + this.lastName;
+};
+Person.prototype.greetings = function (person){
+	if(typeof person instanceof Person){
+		return "Hello" + person.getFullName();
+	}else{
+		return "Hello there";	
+	}
+};
+
+
+var newPerson = new Person("john", "doe"),
+	newPerson2 = new Person("me second", "you");
+	alert(person.greet(newPerson2));
+
+// 
+</script>
+
+
+<body>
+</body>
+</html>

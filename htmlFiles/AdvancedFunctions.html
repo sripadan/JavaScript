@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<script>
+
+alert(dosomthingFirst(2,3));
+
+
+//sdsdjfsdlkjf
+
+
+///sdfdsf
+
+
+
+// Function declaration - loaded before any code executes.
+// Javascript engine hoisted fucntion decalration to the top, so its load first.
+// So you can execute the decalared fucntions anywhere in the code.
+// there are 2 implict values are available to the fucntion.
+// 1. this - Refers to window.
+// 2. arguments - looks like array but not, its an object.
+function dosomthingFirst(paramOne, paramTwo){
+	paramOne = paramOne+5;
+	var parOne = arguments[0];
+	var parTwo = arguments[1];
+	
+	alert(parOne);
+	alert(parTwo);
+	alert(arguments.callee); // this will return calling function, which will useful to execute calling mehod recurrsively
+	
+	return paramOne * paramTwo;
+}	
+
+// As function is a value, it can be returned as well.
+// Returning an anonymous function
+// This is a clouser -  Everything is inside a outter function is a memory
+// Closer = anonymous function is close around the arguments, variables, functions of outter fucntion.
+function returnAnonymousFunction (arg1){
+	var varOne="Everything is in memory";
+	return function (){
+		alert(arg1);
+	};
+}	
+
+var fn = returnAnonymousFunction("Hello");
+var fn2 = returnAnonymousFunction("Hello");
+
+fn();
+// execution context is created. for each fucntional call, and creates memory for each clouser
+fn2();
+fn();
+fn=null;
+
+
+///////
+
+
+// Immediately invoked function 
+// this protects the data from global scope.
+// in this context myFunction cannot be accessible from outside scope.
+(function(){
+	var i=0;
+	function myFunction (){
+		alert("i" + i);
+	}
+}());
+// myFunction(); // - cannot be accessible from outside.
+
+// Lets write a utility function.
+var utility = (function(){
+	var i=0;
+	return {
+		myFunction: function (){
+			alert("i" + i);
+			//return;
+		}
+	}
+}());
+var t = utility.myFunction();
+ 
+</script>
+
+
+<body>
+</body>
+</html>

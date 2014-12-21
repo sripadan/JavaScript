@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<script>
+
+// Datatype function, its fucntion as well.
+// Construction function - Object()
+// Object is haivng Two properties, and handle full of methods
+// Creating Object using Contruction function notation
+var str = new String();
+var str1 = "Hello"
+var person = new Object();
+person.firstName = "Kiran";
+person.lastName = "Kumar";
+person.getFullName = function (){
+	//return person.firstName + " " + person.lastName;
+	return this.firstName + " " + this.lastName;
+}
+
+alert(person.getFullName());
+
+// Instead of doing like above, Object literal notation is used.
+// Anything defined in the curly braces will be properties or methods.
+var personObjectLiteralNotation = {
+	firstName : "Literal",
+	lastName : "Notation",
+	getFullName : function (){
+		//return person.firstName + " " + person.lastName;
+		return this.firstName + " " + this.lastName;
+	}
+};
+
+alert(personObjectLiteralNotation.getFullName());
+
+
+// Why should we use Object
+// To Logically organize Objects. Like employee objects
+
+</script>
+
+
+<body>
+</body>
+</html>
